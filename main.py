@@ -18,12 +18,14 @@ def generate_images(images: list):
     for i in range(len(images)):
         img = images[i]
 
-        body = Image.open(f'./assets/body/{img["body"]}.png').convert('RGBA')
-        eyes = Image.open(f'./assets/eyes/{img["eyes"]}.png').convert('RGBA')
-        mustache = Image.open(f'./assets/mustache/{img["mustache"]}.png').convert('RGBA')
+        background = Image.open(f'assets/background/{img["background"]}.png').convert('RGBA')
+        outfit = Image.open(f'assets/outfit/{img["outfit"]}.png').convert('RGBA')
+        head = Image.open(f'./assets/head/{img["head"]}.png').convert('RGBA')
+        headwear = Image.open(f'./assets/headwear/{img["headwear"]}.png').convert('RGBA')
 
-        ape = Image.alpha_composite(body, eyes)
-        ape = Image.alpha_composite(ape, mustache)
+        ape = Image.alpha_composite(background, outfit)
+        ape = Image.alpha_composite(ape, head)
+        ape = Image.alpha_composite(ape, headwear)
 
         rgb = ape.convert('RGBA')
         file_name = str("artsyape-" + str(i)) + '.png'

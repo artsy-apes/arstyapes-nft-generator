@@ -1,17 +1,21 @@
 {
-  "total_images": 8,
+  "total_images": 20,
   "attributes": {
-    "body": {
-      "images": ["1", "2", "3", "4"],
-      "weights": [50,30, 15, 5]
+    "background": {
+      "images" : ["Golden Space", "Silver Space"],
+      "weights": [50, 50]
     },
-    "eyes": {
-      "images": ["1", "2", "3", "4"],
-      "weights": [50,30, 15, 5]
+    "outfit": {
+      "images": ["Basketball Tanktop", "Black Sweater + Chain", "Captains Suit", "Ethereum Hoodie", "Flower Shirt", "Orange Hoodie", "Shirt _ Tie", "Versace Tshirt"],
+      "weights": [12, 12, 12, 12, 12,12, 12, 8]
     },
-    "mustache": {
-      "images": ["1"],
-      "weights": [100]
+    "head": {
+      "images": ["1-orange", "2-yellow", "3-green", "4-purple", "5-green", "6-gray", "7-orange", "8-yellow", "9-purple", "10-blue"],
+      "weights": [10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+    },
+    "headwear": {
+      "images": ["Captain_s Hat", "Red Cap"],
+      "weights": [50, 50]
     }
   }
 }
