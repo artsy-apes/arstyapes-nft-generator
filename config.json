@@ -1,0 +1,17 @@
+{
+  "total_images": 4,
+  "attributes": {
+    "body": {
+      "images": ["1", "2", "3", "4"],
+      "weights": [50,30, 15, 5]
+    },
+    "eyes": {
+      "images": ["1", "2", "3", "4"],
+      "weights": [50,30, 15, 5]
+    },
+    "mustache": {
+      "images": ["1"],
+      "weights": [100]
+    }
+  }
+}
