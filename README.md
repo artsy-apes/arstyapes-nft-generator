@@ -1,0 +1,1 @@
+# arstyapes-nft-generator
