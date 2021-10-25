@@ -129,3 +129,5 @@ dmypy.json
 .pyre/
 
 generated
+assets/body/*
+assets/background/*
