@@ -129,6 +129,7 @@ dmypy.json
 .pyre/
 
 generated
+assets/*
 assets/outfit/*
 assets/background/*
 assets/head/*

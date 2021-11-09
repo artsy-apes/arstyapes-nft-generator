@@ -1,25 +1,37 @@
 {
-  "total_images": 20,
+  "total_images": 50,
   "attributes": {
     "background": {
-      "images" : ["Golden Space", "Silver Space"],
-      "weights": [50, 50]
-    },
-    "outfit": {
-      "images": ["Basketball Tanktop", "Black Sweater + Chain", "Captains Suit", "Ethereum Hoodie", "Flower Shirt", "Orange Hoodie", "Shirt _ Tie", "Versace Tshirt"],
-      "weights": [12, 12, 12, 12, 12,12, 12, 8]
-    },
-    "head": {
-      "images": ["1-orange", "2-yellow", "3-green", "4-purple", "5-green", "6-gray", "7-orange", "8-yellow", "9-purple", "10-blue"],
-      "weights": [10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+      "images" : ["bluemilkyway", "ocean with blood", "clouds", "universe", "greenmilkyway", "zeros+ones", "universe2", "green+blue", "rainbow", "ocean", "black+gold"] ,
+      "weights": [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
     },
     "eye": {
-      "images": ["eye1", "eye2", "eye3", "eye4", "eye5", "eye6", "eye7"],
+      "images": ["eyes 3", "eyes 4", "eyes 1", "eyes 6", "eyes 5", "eyes 2", "eyes 7"],
       "weights": [13, 13, 13, 13, 13, 13, 9]
     },
+    "jewrely": {
+      "images": ["accessories7_", "accessories28_", "accessories8_", "accessories24_", "accessories10_", "accessories9_", "accessories22_", "None", "accessories6_"],
+      "weights": [10, 10, 10, 10, 10, 10, 10, 10,10]
+    },
+    "accessories": {
+      "images":  ["gasmask","accessories20_", "accessories3_", "accessories23_", "accessories12_", "accessories18_", "None", "accessories14_", "accessories_"],
+      "weights": [90, 10, 10, 10, 10, 10, 10, 10, 10]
+    },
     "headwear": {
-      "images": ["None","Captain_s Hat", "Red Cap"],
-      "weights": [34, 33,33]
+      "images": ["accessories15_", "accessories16_", "accessories25_", "accessories30_", "accessories11_", "accessories1_", "accessories27_", "None", "accessories19_"],
+      "weights": [10, 10, 10, 10, 10, 10, 10, 10, 10]
+    },
+    "mouth attributes": {
+      "images": ["accessories17_", "accessories4_", "accessories26_", "accessories2_", "accessories5_", "accessories21_"],
+      "weights": [10, 10, 10, 10, 10, 10]
+    },
+    "body": {
+      "images": ["yellow-body", "pink-body", "zombie-body", "darkblue-body", "green-body", "red-body", "orange-body", "brown-body", "lightblue-body", "white-body"],
+      "weights": [10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+    },
+    "outfit": {
+      "images": ["artsy apes buildup editting16_", "artsy apes buildup editting43_", "astronaut 1", "artsy apes buildup editting10_", "artsy apes buildup editting32_", "artsy apes buildup editting42_", "artsy apes buildup editting41_", "artsy apes buildup editting29_", "artsy apes buildup editting30_", "artsy apes buildup editting38_", "squidgame", "artsy apes buildup editting34_", "artsy apes buildup editting36_", "artsy apes buildup editting40_", "artsy apes buildup editting9_", "artsy apes buildup editting28_", "artsy apes buildup editting39_", "artsy apes buildup editting19_", "artsy apes buildup editting15_", "artsy apes buildup editting31_", "artsy apes buildup editting45_", "artsy apes buildup editting3_", "artsy apes buildup editting5_", "artsy apes buildup editting14_", "artsy apes buildup editting12_", "artsy apes buildup editting13_", "artsy apes buildup editting21_", "Astronaut 2", "artsy apes buildup editting11_", "artsy apes buildup editting25_", "artsy apes buildup editting26_", "artsy apes buildup editting18_", "artsy apes buildup editting7_", "artsy apes buildup editting35_", "artsy apes buildup editting8_", "artsy apes buildup editting17_", "artsy apes buildup editting4_", "artsy apes buildup editting27_", "artsy apes buildup editting22_", "artsy apes buildup editting2_", "artsy apes buildup editting_", "artsy apes buildup editting23_"],
+      "weights": [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
     }
   }
 }
