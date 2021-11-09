@@ -15,7 +15,7 @@
     },
     "accessories": {
       "images":  ["gasmask","accessories20_", "accessories3_", "accessories23_", "accessories12_", "accessories18_", "None", "accessories14_", "accessories_"],
-      "weights": [90, 10, 10, 10, 10, 10, 10, 10, 10]
+      "weights": [10, 10, 10, 10, 10, 10, 10, 10, 10]
     },
     "headwear": {
       "images": ["accessories15_", "accessories16_", "accessories25_", "accessories30_", "accessories11_", "accessories1_", "accessories27_", "None", "accessories19_"],
