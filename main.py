@@ -73,10 +73,19 @@ def generate_ape_image(id_num: int, image: dict):
         os.mkdir('generated')
     rgb.save("./generated/" + file_name, optimize=True, quality=20)
 
+    generate_json_metadata(id_num, image["traits"])
+
     # Count how many apes generated
     sys.stdout.write("\r")
     sys.stdout.write("{:2d} ape generated.".format(id_num))
     sys.stdout.flush()
+
+def generate_json_metadata(id_num, data):
+    if not os.path.exists("generated/metadata"):
+        os.mkdir('generated/metadata')
+    with open(f"./generated/metadata/artsyape-{str(id_num)}.json", "w") as f:
+        json.dump(data, f, indent=4)
+
 
 
 def main():
@@ -93,8 +102,6 @@ def main():
 
     for i in range(len(images)):
         generate_ape_image(i, images[i])
-
-    # generate_images(images)
 
 
 if __name__ == '__main__':
