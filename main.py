@@ -12,8 +12,8 @@ from Ape import Ape, ZombieApe, SquidgameApe, GasmaskApe, AstronautApe
 
 
 def select_ape_traits(attributes):
-    special_ape = None
-    special_apes = ["zombie", "squidgame", "gasmask", "astronaut"]
+    special_traits = ["zombie", "squidgame", "gasmask", "astronaut"]
+    ape_special_traits = []
 
     traits = dict()
     for att in attributes:
@@ -23,48 +23,21 @@ def select_ape_traits(attributes):
             color = traits[att].split("-")[0]
             traits["head"] = f"{color}-head"
 
-        special_ape = list(s for s in special_apes if s in traits[att])
+        special_trait = list(s for s in special_traits if s in traits[att])
+        if len(special_trait):
+            ape_special_traits.append(special_trait[0])
 
     ape = Ape(traits)
-    if len(special_ape):
-        if special_ape[0] == "zombie":
+    if len(ape_special_traits):
+        if "zombie" in ape_special_traits:
             ape = ZombieApe(traits)
-        elif special_ape[0] == "squidgame":
-            ape = SquidgameApe(traits)
-        elif special_ape[0] == "gasmask":
+        if "gasmask" in ape_special_traits:
             ape = GasmaskApe(traits)
-        elif special_ape[0] == "astronaut":
-            traits["body"] = "astronaut 2"
+        if "squidgame" in ape_special_traits:
+            ape = SquidgameApe(traits)
+        if "astronaut" in ape_special_traits:
             ape = AstronautApe(traits)
-
     return ape
-
-
-# def generate_ape_image(id_num: int, image: dict):
-#     ape = None
-#     for trait in image["render_order"]:
-#         try:
-#             trait_img = Image.open(f'assets/{trait}/{image["traits"][trait]}.png').convert('RGBA')
-#             if ape is None:
-#                 ape = trait_img
-#             else:
-#                 ape = Image.alpha_composite(ape, trait_img)
-#         except KeyError as e:
-#             continue
-#
-#     rgb = ape.convert('RGBA')
-#     file_name = str("artsyape-" + str(id_num)) + '.png'
-#
-#     if not os.path.exists("generated"):
-#         os.mkdir('generated')
-#     rgb.save("./generated/" + file_name, optimize=True, quality=20)
-#
-#     generate_json_metadata(id_num, image["traits"])
-#
-#     # Count how many apes generated
-#     sys.stdout.write("\r")
-#     sys.stdout.write("{:2d} ape generated.".format(id_num))
-#     sys.stdout.flush()
 
 
 def generate_json_metadata(id_num, data):

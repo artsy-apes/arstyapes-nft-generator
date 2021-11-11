@@ -54,5 +54,4 @@ class SquidgameApe(Ape):
 
 
 class GasmaskApe(Ape):
-    RENDER_ORDER = ["background", "body", "outfit",
-                    "head", "accessories", "headwear"]
+    RENDER_ORDER = ["background", "body", "outfit", "head", "accessories", "headwear"]
