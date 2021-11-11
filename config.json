@@ -1,5 +1,5 @@
 {
-  "total_images": 50,
+  "total_images": 100,
   "attributes": {
     "background": {
       "images" : ["bluemilkyway", "ocean with blood", "clouds", "universe", "greenmilkyway", "zeros+ones", "universe2", "green+blue", "rainbow", "ocean", "black+gold"] ,
@@ -9,7 +9,7 @@
       "images": ["eyes 3", "eyes 4", "eyes 1", "eyes 6", "eyes 5", "eyes 2", "eyes 7"],
       "weights": [13, 13, 13, 13, 13, 13, 9]
     },
-    "jewrely": {
+    "jewelry": {
       "images": ["accessories7_", "accessories28_", "accessories8_", "accessories24_", "accessories10_", "accessories9_", "accessories22_", "None", "accessories6_"],
       "weights": [10, 10, 10, 10, 10, 10, 10, 10,10]
     },
