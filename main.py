@@ -1,12 +1,7 @@
-import enum
 import json
-import os
-import sys
 import random
-import pprint as pp
 from collections import OrderedDict
 
-from PIL import Image
 
 from Ape import Ape, ZombieApe, SquidgameApe, GasmaskApe, AstronautApe
 
@@ -36,15 +31,9 @@ def select_ape_traits(attributes):
         if "squidgame" in ape_special_traits:
             ape = SquidgameApe(traits)
         if "astronaut" in ape_special_traits:
+            traits["body"] = "astronaut 2"
             ape = AstronautApe(traits)
     return ape
-
-
-def generate_json_metadata(id_num, data):
-    if not os.path.exists("generated/metadata"):
-        os.mkdir('generated/metadata')
-    with open(f"./generated/metadata/artsyape-{str(id_num)}.json", "w") as f:
-        json.dump(data, f, indent=4)
 
 
 def main():

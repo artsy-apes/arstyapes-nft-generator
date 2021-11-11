@@ -1,3 +1,4 @@
+import json
 import os
 import sys
 from PIL import Image
@@ -9,9 +10,11 @@ class Ape:
                     "mouth attributes", "accessories", "headwear"]
 
     def __init__(self, traits: dict):
+        self._id = None
         self._traits = traits
 
     def render(self, _id):
+        self._id = _id
         ape = None
         for trait in self.RENDER_ORDER:
             try:
@@ -30,12 +33,25 @@ class Ape:
             os.mkdir('generated')
         rgb.save("./generated/" + file_name, optimize=True, quality=20)
 
-        # generate_json_metadata(id_num, image["traits"])
+        self._generate_json_metadata()
 
         # Count how many apes generated
         sys.stdout.write("\r")
         sys.stdout.write("{:2d} ape generated.".format(_id))
         sys.stdout.flush()
+
+    def _generate_json_metadata(self):
+        if not os.path.exists("generated/metadata"):
+            os.mkdir('generated/metadata')
+
+        data = {
+            "id": self._id,
+            "traits": self._traits
+        }
+        with open(f"./generated/metadata/artsyape-{str(self._id)}.json", "w") as f:
+            json.dump(data, f, indent=4)
+
+
 
 
 class ZombieApe(Ape):
