@@ -1,6 +1,5 @@
 import json
 import os
-import sys
 from PIL import Image
 
 
@@ -13,8 +12,15 @@ class Ape:
         self._id = None
         self._traits = traits
 
-    def render(self, _id):
-        self._id = _id
+    @property
+    def id(self):
+        return self._id
+
+    @id.setter
+    def id(self, id_num):
+        self._id = id_num
+
+    def render(self):
         ape = None
         for trait in self.RENDER_ORDER:
             try:
@@ -23,11 +29,11 @@ class Ape:
                     ape = trait_img
                 else:
                     ape = Image.alpha_composite(ape, trait_img)
-            except KeyError as e:
+            except KeyError:
                 continue
 
         rgb = ape.convert('RGBA')
-        file_name = str("artsyape-" + str(_id)) + '.png'
+        file_name = str("artsyape-" + str(self.id)) + '.png'
 
         if not os.path.exists("generated"):
             os.mkdir('generated')
@@ -35,23 +41,16 @@ class Ape:
 
         self._generate_json_metadata()
 
-        # Count how many apes generated
-        sys.stdout.write("\r")
-        sys.stdout.write("{:2d} ape generated.".format(_id))
-        sys.stdout.flush()
-
     def _generate_json_metadata(self):
         if not os.path.exists("generated/metadata"):
             os.mkdir('generated/metadata')
 
         data = {
-            "id": self._id,
+            "id": self.id,
             "traits": self._traits
         }
-        with open(f"./generated/metadata/artsyape-{str(self._id)}.json", "w") as f:
+        with open(f"./generated/metadata/artsyape-{str(self.id)}.json", "w") as f:
             json.dump(data, f, indent=4)
-
-
 
 
 class ZombieApe(Ape):

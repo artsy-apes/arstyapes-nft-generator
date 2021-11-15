@@ -1,8 +1,7 @@
 import json
 import random
+import sys
 from collections import OrderedDict
-
-
 from Ape import Ape, ZombieApe, SquidgameApe, GasmaskApe, AstronautApe
 
 
@@ -49,7 +48,12 @@ def main():
             it += 1
 
     for i in range(len(apes)):
-        apes[i].render(i)
+        apes[i].id = i
+        apes[i].render()
+        # Count how many apes generated
+        sys.stdout.write("\r")
+        sys.stdout.write("{:2d} ape generated.".format(i))
+        sys.stdout.flush()
 
 
 if __name__ == '__main__':
