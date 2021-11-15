@@ -47,12 +47,16 @@ def main():
             apes.append(ape)
             it += 1
 
+        sys.stdout.write("\r")
+        sys.stdout.write("{:2d} ape generated.".format(it))
+        sys.stdout.flush()
+
     for i in range(len(apes)):
         apes[i].id = i
         apes[i].render()
         # Count how many apes generated
         sys.stdout.write("\r")
-        sys.stdout.write("{:2d} ape generated.".format(i))
+        sys.stdout.write("{:2d} ape rendered.".format(i))
         sys.stdout.flush()
 
 
