@@ -45,12 +45,12 @@ class Ape:
             except KeyError:
                 continue
 
-        rgb = ape.convert('RGB')
-        file_name = str("artsyape-" + str(self.id)) + '.png'
-
         if not os.path.exists("generated"):
             os.mkdir('generated')
-        rgb.save("./generated/" + file_name, optimize=True, quality=20)
+
+        ape = ape.convert('RGB')
+        file_name = str("artsyape-" + str(self.id))
+        ape.save("./generated/" + file_name, "JPEG", optimize=True, quality=50)
 
         self._generate_json_metadata()
 
@@ -80,7 +80,6 @@ class AstronautApe(Ape):
         super().__init__(traits)
         if "zombie" in self._traits["body"]:
             self._traits["eye"] = "None"
-
         if "gasmask" in self._traits["accessories"]:
             self._traits["accessories"] = "None"
 
