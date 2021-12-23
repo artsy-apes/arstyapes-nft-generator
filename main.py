@@ -2,11 +2,11 @@ import json
 import random
 import sys
 from collections import OrderedDict
-from Ape import Ape, ZombieApe, SquidgameApe, GasmaskApe, AstronautApe
+from Ape import Ape, ZombieApe, SquidgameApe, GasmaskApe, AstronautApe, HoodieApe, GoldenApe
 
 
 def select_ape_traits(attributes):
-    special_traits = ["zombie", "squidgame", "gasmask", "astronaut"]
+    special_traits = ["zombie", "squidgame", "gasmask", "astronaut", "hoodie 1", "golden"]
     ape_special_traits = []
 
     traits = dict()
@@ -23,6 +23,8 @@ def select_ape_traits(attributes):
 
     ape = Ape(traits)
     if len(ape_special_traits):
+        if "golden" in ape_special_traits:
+            ape = GoldenApe(traits)
         if "zombie" in ape_special_traits:
             ape = ZombieApe(traits)
         if "gasmask" in ape_special_traits:
@@ -32,6 +34,9 @@ def select_ape_traits(attributes):
         if "astronaut" in ape_special_traits:
             traits["body"] = "astronaut 2"
             ape = AstronautApe(traits)
+        if "hoodie 1" in ape_special_traits:
+            traits["body"] = "hoodie 2"
+            ape = HoodieApe(traits)
     return ape
 
 
