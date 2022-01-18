@@ -18,7 +18,10 @@ def main():
         file_names = {}
         for file in os.listdir(base_path + directory):
             if os.path.isfile(base_path + directory + f"/{file}"):
-                file_names[file[:-4]] = 10  # Add 10 as a default weight
+                trait_name = file[:-4]
+                if trait_name in ["Astronaut 2", "Orange Hoodie underlay", "Orange Hoodie overlay"]:
+                    continue
+                file_names[trait_name] = 10  # Add 10 as a default weight
         if directory in attributes_types:
             config["traits"][directory] = file_names
 
