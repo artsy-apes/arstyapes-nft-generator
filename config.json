@@ -1,37 +1,158 @@
 {
-  "total_images": 1000,
-  "attributes": {
-    "background": {
-      "images" : ["backround 9 ", "backround 1", "backround 11 ", "backround 10", "backround 13", "backround 4 ", "backround 12", "backround 0 ", "backround 5 ", "backround 2", "backround 8 ", "backround 6 ", "backround 15", "backround 3", "backround 7", "backround 14", "backround 16"] ,
-      "weights": [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
-    },
-    "eye": {
-      "images": ["eyes 1", "eyes 2", "eyes 3", "eyes 4", "eyes 5", "eyes 6", "eyes 7"],
-      "weights": [13, 13, 13, 13, 13, 13, 9]
-    },
-    "jewelry": {
-      "images": ["accessories7_", "normal silver neckless_", "accessories28_", "accessories8_", "christ neckless", "accessories24_", "accessories10_", "accessories9_", "accessories22_", "None", "christ earring_", "accessories6_"],
-      "weights": [10, 10, 10, 10, 10, 10, 10, 10,10, 10, 10, 10]
-    },
-    "headwear": {
-      "images": ["chritmas hat", "accessories15_", "accessories16_", "accessories34_", "accessories32_", "accessories25_", "accessories30_", "accessories31_", "accessories11_", "accessories1_", "accessories27_", "None", "accessories19_"],
-      "weights": [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
-    },
-    "mouth attributes": {
-      "images": ["lollypop", "party whistle", "cigarrette", "bubblegum", "pizza", "mouthmask", "cigar"],
-      "weights": [10, 10, 10, 10, 10, 10, 10]
-    },
-    "body": {
-      "images": ["golden-body","yellow-body", "pink-body", "zombie-body", "darkblue-body", "green-body", "red-body", "orange-body", "brown-body", "lightblue-body", "grey-body"],
-      "weights": [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
-    },
-    "accessories": {
-      "images": ["glasses orange_", "accessories35_", "accessories20_", "accessories33_", "accessories3_", "accessories23_", "accessories12_", "gasmask", "accessories18_", "None", "accessories14_", "accessories_"],
-      "weights": [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
-    },
-    "outfit": {
-      "images": ["hoodie 1","artsy apes buildup editting16_", "artsy apes buildup editting43_", "astronaut 1", "artsy apes buildup editting10_", "artsy apes buildup editting32_", "artsy apes buildup editting42_", "artsy apes buildup editting50_", "artsy apes buildup editting41_", "artsy apes buildup editting29_", "laurent tshirt_", "artsy apes buildup editting30_", "artsy apes buildup editting38_", "squidgame", "artsy apes buildup editting34_", "artsy apes buildup editting48_", "artsy apes buildup editting36_", "artsy apes buildup editting40_", "artsy apes buildup editting52_", "artsy apes buildup editting9_", "artsy apes buildup editting46_", "artsy apes buildup editting28_", "artsy apes buildup editting39_", "artsy apes buildup editting19_", "artsy apes buildup editting15_", "artsy apes buildup editting31_", "artsy apes buildup editting45_", "artsy apes buildup editting3_", "artsy apes buildup editting5_", "artsy apes buildup editting14_", "artsy apes buildup editting12_", "banana hoodie_", "t shirt das eggenberg", "artsy apes buildup editting13_", "artsy apes buildup editting21_", "artsy apes buildup editting11_", "artsy apes buildup editting47_", "artsy apes buildup editting53_", "artsy apes buildup editting25_", "artsy apes buildup editting26_", "artsy apes buildup editting18_", "artsy apes buildup editting7_", "artsy apes buildup editting35_", "artsy apes buildup editting8_", "artsy apes buildup editting54_", "artsy apes buildup editting17_", "artsy apes buildup editting4_", "artsy apes buildup editting27_", "artsy apes buildup editting22_", "artsy apes buildup editting_", "artsy apes buildup editting49_", "artsy apes buildup editting23_", "artsy apes buildup editting51_"],
-      "weights": [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 ]
+    "total_images": 100,
+    "traits": {
+        "body": {
+            "Ham body": 10,
+            "Juanita body": 10,
+            "Robin body": 10,
+            "Lou body": 10,
+            "Albert body": 10,
+            "Turned body": 10,
+            "Jeff body ": 10,
+            "Gordo body": 10,
+            "Whitney body": 10,
+            "Bruno body": 10,
+            "Golden body": 10
+        },
+        "jewelry": {
+            "Double Ear Piercing": 10,
+            "cross neckless": 10,
+            "Golden Nose Ring": 10,
+            "Golden Earring (Left)": 10,
+            "#wagmi chain": 10,
+            "Septum Piercing": 10,
+            "Rose Necklace": 10,
+            "Golden Eyebrow Piercing ": 10,
+            "silver neckless": 10,
+            "Bitcoin Chain": 10,
+            "cross earring ": 10,
+            "Gold Chain": 10
+        },
+        "outfit": {
+            "Astronaut": 10,
+            "Orange Hoodie overlay 2": 10,
+            "Orange Hoodie": 10,
+            "SciFi Space Suit": 10,
+            "Hazmat Suit": 10,
+            "Ripped Yellow Longsleeve": 10,
+            "Doctor_s Outfit": 10,
+            "Versace Tee": 10,
+            "Rich Old White Male Tee": 10,
+            "Luna Tee": 10,
+            "Thorchain hoodie": 10,
+            "Derby Stars Turtleneck": 10,
+            "100 Emoji Swag Tee": 10,
+            "Ripped Black Shirt": 10,
+            "Banana Bonanza Hoodie": 10,
+            "Studo Suit _ Tie": 10,
+            "Dappimg Tee": 10,
+            "White Shirt _ Blue Tie": 10,
+            "Ethereum Hoodie": 10,
+            "Orange Hoodie underlay 0": 10,
+            "Colorbomb Tee": 10,
+            "Laurent Tee": 10,
+            "Fantom sweater": 10,
+            "Go Student Tee": 10,
+            "Catchphrase Ripped Tee": 10,
+            "Go _ Yourself Tee": 10,
+            "Green Puffer Jacket": 10,
+            "Ape Coin Tee": 10,
+            "Chef_s Jacket": 10,
+            "ArtsyApes Basketball Jersey": 10,
+            "Dopey Hoodie": 10,
+            "Plain White Shirt": 10,
+            "Stebo Tee": 10,
+            "Joker Suit": 10,
+            "Suit _ Bow Tie": 10,
+            "Ape College Jacket": 10,
+            "Eggenberg Tee": 10,
+            "Black Turtleneck": 10,
+            "Keikogi": 10,
+            "White Tee Blue Shirt": 10,
+            "Blue Jacket": 10,
+            "ArtsyApes Tee": 10,
+            "Hawaii Shirt": 10,
+            "_APES_ Sweater": 10,
+            "Thorchain Hoodie _ Jacket": 10,
+            "Royal Outfit": 10,
+            "Captain_s Outfit": 10,
+            "Black Waistcoat ": 10,
+            "Omega Hoodie": 10,
+            "Blue Camo Shir": 10,
+            "Astronaut 2": 10,
+            "Black tee": 10,
+            "3,3 Tee": 10,
+            "ArtsyApes Brains Longsleeve": 10,
+            "Rainbow Pin Suit _ Tie": 10,
+            "White Plain Tee": 10,
+            "Anarchy Jacket": 10,
+            "Stebo Sweater": 10,
+            "Guy Fieri Flame Shirt": 10,
+            "MVVD hoddie": 10,
+            "Clown Suit": 10
+        },
+        "eye": {
+            "Orange Eyebrows, Blue Eyes": 10,
+            "Grey Eyebrows, Yellow Eyes": 10,
+            "Purple Eyebrows, Green Eyes": 10,
+            "Yellow Eyebrows, Blue Eyes": 10,
+            "Blue Eyebrows, Orange Eyes": 10,
+            "Green Eyebrows, Orange Eyes": 10,
+            "Brown Eyebrows, Orange Eyes": 10
+        },
+        "mouth attributes": {
+            "Respirator": 10
+        },
+        "background": {
+            "Half-Sprayed Wall": 10,
+            "Bright Sky": 10,
+            "Sprayed Wall": 10,
+            "Mountains": 10,
+            "Sunny Beach": 10,
+            "Space Gold_": 10,
+            "Deep Blue": 10,
+            "Abstract Red_Blue": 10,
+            "Stebo Tag Wall": 10,
+            "Rainbow": 10,
+            "Abstract White_Blue": 10,
+            "Deep Green": 10,
+            "Red and Green Aura": 10,
+            "Brick Wall": 10,
+            "Ones _ Zeros": 10,
+            "Space Silver": 10,
+            "Matrix": 10,
+            "Gold Flakes": 10
+        },
+        "glasses": {
+            "Clear Lenses Round": 10,
+            "Space Comms Gadget": 10,
+            "Flower Power": 10,
+            "Gasmask": 10,
+            "Pilot Sunglasses": 10,
+            "Deal With It": 10,
+            "None": 10,
+            "Clear Lenses Squared": 10,
+            "3D": 10,
+            "Orange Shades": 10,
+            "Green Cybernetic Visor": 10,
+            "Heart Sunglasses": 10
+        },
+        "headwear": {
+            "Clown wig": 10,
+            "Propeller hat": 10,
+            "Santa Hat": 10,
+            "Gold crown": 10,
+            "None": 10,
+            "Visor cap": 10,
+            "ArtsyApes Cap": 10,
+            "Captains Hat": 10,
+            "Gold halo": 10,
+            "Reverse hat": 10,
+            "Devil Horns": 10,
+            "Beer helmet ": 10,
+            "orange beenie": 10,
+            "Red cap": 10,
+            "Chef_s Hat": 10
+        }
     }
-  }
 }
