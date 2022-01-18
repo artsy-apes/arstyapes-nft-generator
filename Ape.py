@@ -7,18 +7,18 @@ from PIL import Image
 
 class Ape:
     RENDER_ORDER = ["background", "body", "outfit",
-                    "head", "eye", "jewelry",
-                    "mouth attributes", "accessories", "headwear"]
+                     "jewelry", "head", "eye",
+                    "mouth attributes", "glasses", "headwear"]
 
     def __init__(self, traits: dict):
         self._id = None
         self._traits = traits
-        self._color = traits["head"].split("-")[0]
-        self._tag_path = "assets/tag/chip and tag black.png"
+        # self._color = traits["head"].split("-")[0]
+        self._tag_path = "assets/tag/Tag white.png"
 
-        background_id = int(traits["background"].split(" ")[1])
-        if background_id in [4, 5, 6, 7, 8, 10, 11, 13, 14 ]:
-            self._tag_path = "assets/tag/chip and tag white.png"
+        # background_id = int(traits["background"].split(" ")[1])
+        # if background_id in [4, 5, 6, 7, 8, 10, 11, 13, 14 ]:
+        #     self._tag_path = "assets/tag/chip and tag white.png"
 
 
     def __eq__(self, other):
@@ -41,9 +41,17 @@ class Ape:
         for trait in self.RENDER_ORDER:
             try:
                 trait_img = Image.open(f'assets/{trait}/{self._traits[trait]}.png').convert('RGBA')
-                if trait == "mouth attributes" and self._traits[trait] != "mouthmask":
-                    file_path = f'assets/{trait}/{self._color}/{self._traits[trait]}.png'
+                if trait == "mouth attributes" and self._traits[trait] != "Respirator":
+                    file_path = f'assets/{trait}/{self._traits["head"]}/{self._traits[trait]}.png'
                     trait_img = Image.open(file_path).convert('RGBA')
+                if trait == "headwear" and self.traits["head"] in ["Robin"] and self.traits["headwear"] in ["Gold crown", "Reverse hat", "Captains Hat"]:
+                    file_path = f'assets/{trait}/{self._traits["head"]}/{self._traits[trait]}.png'
+                    trait_img = Image.open(file_path).convert('RGBA')
+                if trait == "headwear" and self.traits["head"] in ["Juanita"] and self.traits["headwear"] in ["Gold crown", "Reverse hat"]:
+                    file_path = f'assets/{trait}/{self._traits["head"]}/{self._traits[trait]}.png'
+                    trait_img = Image.open(file_path).convert('RGBA')
+
+
                 if ape is None:
                     ape = trait_img
                 else:
@@ -59,7 +67,7 @@ class Ape:
             os.mkdir('generated')
 
         ape = ape.convert('RGB')
-        file_name = str("artsyape-" + str(self.id))
+        file_name = str("artsyape-" + str(self.id) + ".jpeg")
         ape.save("./generated/" + file_name, "JPEG", optimize=True, quality=30)
 
         self._generate_json_metadata()
@@ -78,28 +86,28 @@ class Ape:
 
 class GoldenApe(Ape):
     RENDER_ORDER = ["background", "body", "outfit",
-                    "head", "jewelry", "mouth attributes",
-                    "accessories", "headwear"]
+                    "jewelry", "head", "mouth attributes",
+                    "glasses", "headwear"]
 
 
 class ZombieApe(Ape):
     RENDER_ORDER = ["background", "body", "outfit",
-                    "head", "jewelry", "mouth attributes",
-                    "accessories", "headwear"]
+                     "jewelry", "head", "mouth attributes",
+                    "headwear"]
 
 
 class AstronautApe(Ape):
     RENDER_ORDER = ["background", "body", "head",
-                    "eye", "accessories", "outfit"]
+                    "eye", "glasses", "outfit"]
 
     def __init__(self, traits: dict):
         super().__init__(traits)
-        if "zombie" in self._traits["head"]:
+        if "Turned" in self._traits["head"]:
             self._traits["eye"] = "None"
-        if "golden" in self._traits["head"]:
+        if "Golden" in self._traits["head"]:
             self._traits["eye"] = "None"
-        if "gasmask" in self._traits["accessories"]:
-            self._traits["accessories"] = "None"
+        if "Gasmask" in self._traits["glasses"]:
+            self._traits["glasses"] = "None"
 
 
 class SquidgameApe(Ape):
@@ -107,15 +115,15 @@ class SquidgameApe(Ape):
 
 
 class GasmaskApe(Ape):
-    RENDER_ORDER = ["background", "body", "outfit", "head", "accessories", "headwear"]
+    RENDER_ORDER = ["background", "body", "outfit", "head", "glasses", "headwear"]
 
 
 class HoodieApe(Ape):
     def __init__(self, traits: dict):
         super().__init__(traits)
-        self.traits["headwear"] = "hoodie over head overlay 2"
+
 
         if "zombie" in self._traits["head"]:
             self._traits["eye"] = "None"
-        if "gasmask" in self._traits["accessories"]:
+        if "gasmask" in self._traits["glasses"]:
             self._traits["mouth attributes"] = "None"
