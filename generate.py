@@ -55,9 +55,9 @@ def main():
         apes[i].id = i
         apes[i].render()
         # Count how many apes generated
-        # sys.stdout.write("\r")
-        sys.stdout.write(f"{i} ape rendered. {type(apes[i])}\n")
-        # sys.stdout.flush()
+        sys.stdout.write("\r")
+        sys.stdout.write(f"{i} ape rendered.")
+        sys.stdout.flush()
 
 
 if __name__ == '__main__':

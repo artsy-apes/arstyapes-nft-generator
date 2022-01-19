@@ -1,25 +1,35 @@
 import json
 import os
-import pprint
-
+from copy import deepcopy
 from PIL import Image
 
 
 class Ape:
     RENDER_ORDER = ["background", "body", "outfit",
-                     "jewelry", "head", "eye",
+                    "jewelry", "head", "eye",
                     "mouth attributes", "glasses", "headwear"]
 
     def __init__(self, traits: dict):
         self._id = None
         self._traits = traits
-        # self._color = traits["head"].split("-")[0]
-        self._tag_path = "assets/tag/Tag white.png"
+        self.__traits_path = {}
 
-        # background_id = int(traits["background"].split(" ")[1])
-        # if background_id in [4, 5, 6, 7, 8, 10, 11, 13, 14 ]:
-        #     self._tag_path = "assets/tag/chip and tag white.png"
+        # Resolve traits path
+        for _type, name in self.traits.items():
+            path = f'assets/{_type}/{name}.png'
 
+            if _type == "mouth attributes" and self._traits[_type] != "Respirator":
+                path = f'assets/{_type}/{self._traits["head"]}/{self._traits[_type]}.png'
+            if _type == "jewlery" and self._traits[_type] == "Septum Piercing":
+                path = f'assets/{_type}/{self._traits["head"]}/{self._traits[_type]}.png'
+            if _type == "headwear" and self.traits["head"] in ["Robin"] and self.traits["headwear"] in [
+                "Gold crown", "Reverse hat", "Captains Hat"]:
+                path = f'assets/{_type}/{self._traits["head"]}/{self._traits[_type]}.png'
+            if _type == "headwear" and self.traits["head"] in ["Juanita"] and self.traits["headwear"] in [
+                "Gold crown", "Reverse hat"]:
+                path = f'assets/{_type}/{self._traits["head"]}/{self._traits[_type]}.png'
+
+            self.__traits_path[_type] = path
 
     def __eq__(self, other):
         return self._traits == other.traits
@@ -36,31 +46,31 @@ class Ape:
     def id(self, id_num):
         self._id = id_num
 
+    def _has_face_jewelry(self) -> bool:
+        face_jewelry = ["Cross earring", "Double Ear Piercing",
+                        "Golden Earring (Left)", "Golden Eyebrow Piercing",
+                        "Golden Nose Ring", "Septum Piercing"]
+        return self.traits["jewelry"] in face_jewelry;
+
     def render(self):
         ape = None
-        for trait in self.RENDER_ORDER:
+
+        render_order = deepcopy(self.RENDER_ORDER)
+        if self._has_face_jewelry() and type(self) is not GasmaskApe and type(self) is not AstronautApe:
+            render_order[3], render_order[4] = render_order[4], render_order[3]
+
+        for trait in render_order:
             try:
-                trait_img = Image.open(f'assets/{trait}/{self._traits[trait]}.png').convert('RGBA')
-                if trait == "mouth attributes" and self._traits[trait] != "Respirator":
-                    file_path = f'assets/{trait}/{self._traits["head"]}/{self._traits[trait]}.png'
-                    trait_img = Image.open(file_path).convert('RGBA')
-                if trait == "headwear" and self.traits["head"] in ["Robin"] and self.traits["headwear"] in ["Gold crown", "Reverse hat", "Captains Hat"]:
-                    file_path = f'assets/{trait}/{self._traits["head"]}/{self._traits[trait]}.png'
-                    trait_img = Image.open(file_path).convert('RGBA')
-                if trait == "headwear" and self.traits["head"] in ["Juanita"] and self.traits["headwear"] in ["Gold crown", "Reverse hat"]:
-                    file_path = f'assets/{trait}/{self._traits["head"]}/{self._traits[trait]}.png'
-                    trait_img = Image.open(file_path).convert('RGBA')
-
-
-                if ape is None:
-                    ape = trait_img
-                else:
-                    ape = Image.alpha_composite(ape, trait_img)
+                trait_img = Image.open(self.__traits_path[trait]).convert('RGBA')
+                ape = trait_img if (ape is None) else Image.alpha_composite(ape, trait_img)
             except KeyError as e:
                 print(e)
                 continue
+            except Exception as e:
+                print(e)
+                print(self._traits)
 
-        tag_img = Image.open(self._tag_path).convert('RGBA')
+        tag_img = Image.open("assets/tag/Tag white.png").convert('RGBA')
         ape = Image.alpha_composite(ape, tag_img)
 
         if not os.path.exists("generated"):
@@ -70,9 +80,9 @@ class Ape:
         file_name = str("artsyape-" + str(self.id) + ".jpeg")
         ape.save("./generated/" + file_name, "JPEG", optimize=True, quality=30)
 
-        self._generate_json_metadata()
+        self._create_json_metadata_file()
 
-    def _generate_json_metadata(self):
+    def _create_json_metadata_file(self):
         if not os.path.exists("generated/metadata"):
             os.mkdir('generated/metadata')
 
@@ -92,7 +102,7 @@ class GoldenApe(Ape):
 
 class ZombieApe(Ape):
     RENDER_ORDER = ["background", "body", "outfit",
-                     "jewelry", "head", "mouth attributes",
+                    "jewelry", "head", "mouth attributes",
                     "headwear"]
 
 
@@ -101,13 +111,13 @@ class AstronautApe(Ape):
                     "eye", "glasses", "outfit"]
 
     def __init__(self, traits: dict):
+        if "Turned" in traits["head"]:
+            traits["eye"] = "None"
+        if "Golden" in traits["head"]:
+            traits["eye"] = "None"
+        if "Gasmask" in traits["glasses"]:
+            traits["glasses"] = "None"
         super().__init__(traits)
-        if "Turned" in self._traits["head"]:
-            self._traits["eye"] = "None"
-        if "Golden" in self._traits["head"]:
-            self._traits["eye"] = "None"
-        if "Gasmask" in self._traits["glasses"]:
-            self._traits["glasses"] = "None"
 
 
 class SquidgameApe(Ape):
@@ -120,10 +130,8 @@ class GasmaskApe(Ape):
 
 class HoodieApe(Ape):
     def __init__(self, traits: dict):
+        if "Turned" in traits["head"]:
+            traits["eye"] = "None"
+        if "Gasmask" in traits["glasses"]:
+            traits["mouth attributes"] = "None"
         super().__init__(traits)
-
-
-        if "zombie" in self._traits["head"]:
-            self._traits["eye"] = "None"
-        if "gasmask" in self._traits["glasses"]:
-            self._traits["mouth attributes"] = "None"

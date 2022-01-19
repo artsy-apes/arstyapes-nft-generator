@@ -1,5 +1,5 @@
 {
-    "total_images": 100,
+    "total_images": 50,
     "traits": {
         "body": {
             "Lou": 10,
@@ -10,23 +10,22 @@
             "Turned": 10,
             "Whitney": 10,
             "Robin": 10,
-            "Bruno": 10,
+            "Bruno": 9999,
             "Juanita": 10,
             "Golden": 10
         },
         "jewelry": {
             "Double Ear Piercing": 10,
-            "cross neckless": 10,
+            "Cross neckless": 10,
+            "Cross earring": 10,
             "Golden Nose Ring": 10,
             "Golden Earring (Left)": 10,
             "#wagmi chain": 10,
             "Septum Piercing": 10,
             "Rose Necklace": 10,
-            "Golden Eyebrow Piercing ": 10,
-            "silver neckless": 10,
             "Bitcoin Chain": 10,
-            "cross earring ": 10,
-            "Gold Chain": 10
+            "Silver neckless": 10,
+            "Golden Eyebrow Piercing": 10
         },
         "outfit": {
             "Astronaut": 10,

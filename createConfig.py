@@ -7,7 +7,7 @@ def main():
     Creates a config file from the assets folder.
     """
     config = {
-        "total_images": 100,
+        "total_images": 50,
         "traits": {}
     }
     attributes_types = ("background", "eye", "jewelry", "headwear", "mouth attributes", "body", "glasses", "outfit")
