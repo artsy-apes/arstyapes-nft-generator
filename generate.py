@@ -1,7 +1,6 @@
 import json
 import random
 import sys
-from collections import OrderedDict
 from Ape import Ape, ZombieApe, SquidgameApe, GasmaskApe, AstronautApe, HoodieApe, GoldenApe
 
 

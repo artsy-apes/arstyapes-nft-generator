@@ -47,8 +47,8 @@ class Ape:
         self._id = id_num
 
     def _has_face_jewelry(self) -> bool:
-        face_jewelry = ["Cross earring", "Double Ear Piercing",
-                        "Golden Earring (Left)", "Golden Eyebrow Piercing",
+        face_jewelry = ["Cross Earring", "Double Ear Piercing",
+                        "Golden Earring", "Golden Eyebrow Piercing",
                         "Golden Nose Ring", "Septum Piercing"]
         return self.traits["jewelry"] in face_jewelry;
 
