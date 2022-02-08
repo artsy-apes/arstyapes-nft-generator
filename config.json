@@ -1,5 +1,5 @@
 {
-    "total_images": 500,
+    "total_images": 1000,
     "traits": {
         "body": {
             "Lou": 11,
@@ -44,6 +44,7 @@
             "Ripped Black Shirt": 2,
             "Banana Bonanza Hoodie": 3,
             "Studo Suit _ Tie": 0,
+            "None": 2,
             "Dappimg Tee": 1,
             "White Shirt _ Blue Tie": 2,
             "Ethereum Hoodie": 2,
@@ -66,7 +67,7 @@
             "Ape College Jacket": 3,
             "Black Turtleneck": 3,
             "Keikogi": 1,
-            "White Tee Blue Shirt": 3,
+            "White Tee Blue Shirt": 2,
             "Blue Jacket": 2.5,
             "ArtsyApes Tee": 3,
             "Hawaii Shirt": 2,
@@ -76,7 +77,7 @@
             "Captain_s Outfit": 0.7,
             "Black Waistcoat ": 1.5,
             "Omega Hoodie": 1,
-            "Blue Camo Shirt": 3.4,
+            "Blue Camo Shirt": 2.4,
             "Black tee": 2,
             "3,3 Tee": 3.3,
             "ArtsyApes Brains Longsleeve": 1,
@@ -115,7 +116,7 @@
             "Abstract Red_Blue": 5,
             "Mountains": 6,
             "Sunny Beach": 3,
-            "Space Gold_": 2,
+            "Space Gold": 2,
             "Ones _ Zeros": 6,
             "Bright Sky": 7,
             "Red and Green Aura": 7,

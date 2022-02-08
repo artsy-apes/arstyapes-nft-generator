@@ -1,4 +1,5 @@
 import json
+import os
 import random
 import sys
 from Ape import Ape, ZombieApe, SquidgameApe, GasmaskApe, AstronautApe, HoodieApe, GoldenApe
@@ -25,7 +26,6 @@ def select_ape_traits(traits):
     if "Squidgame" in ape_traits["outfit"]:
         ape = SquidgameApe(ape_traits)
     if "Astronaut" in ape_traits["outfit"]:
-        ape_traits["body"] = "Astronaut 2"
         ape = AstronautApe(ape_traits)
     if "Orange Hoodie" in ape_traits["outfit"]:
         ape_traits["body"] = "Orange Hoodie underlay"
@@ -46,12 +46,13 @@ def main():
             apes.append(ape)
             it += 1
 
-        sys.stdout.write("\r")
-        sys.stdout.write("{:2d} ape generated.".format(it))
-        sys.stdout.flush()
+            sys.stdout.write("\r")
+            sys.stdout.write("{:2d} ape generated.".format(it))
+            sys.stdout.flush()
 
+    random.shuffle(apes)
     for i in range(len(apes)):
-        apes[i].id = i
+        apes[i].id = i + 1
         apes[i].render()
         # Count how many apes generated
         sys.stdout.write("\r")

@@ -20,13 +20,29 @@ class Ape:
 
             if _type == "mouth attributes" and self._traits[_type] != "Respirator":
                 path = f'assets/{_type}/{self._traits["head"]}/{self._traits[_type]}.png'
-            if _type == "jewlery" and self._traits[_type] == "Septum Piercing":
+
+            if _type == 'jewelry' and self._traits[_type] == "Septum Piercing":
                 path = f'assets/{_type}/{self._traits["head"]}/{self._traits[_type]}.png'
-            if _type == "headwear" and self.traits["head"] in ["Robin"] and self.traits["headwear"] in [
-                "Gold crown", "Reverse hat", "Captains Hat"]:
+
+            if _type == 'jewelry' and self.traits[_type] == "Golden Earring" and self.traits["body"] == "Jeff":
+                path = f'assets/{_type}/{self._traits["body"]}/{self._traits[_type]}.png'
+
+            if _type == 'jewelry' and self._traits[_type] == "Golden Eyebrow Piercing":
+                path = f'assets/{_type}/{self._traits["eye"]}/{self._traits[_type]}.png'
+
+            if _type == 'jewelry' \
+                    and self._traits[_type] == "Golden Eyebrow Piercing" \
+                    and self.traits["body"] == "Turned":
+                path = f'assets/{_type}/{self.traits["body"]}/{self._traits[_type]}.png'
+
+            if _type == "headwear" \
+                    and self.traits["body"] == "Robin" \
+                    and self.traits["headwear"] in ["Gold Crown", "Reverse Hat", "Captains Hat"]:
                 path = f'assets/{_type}/{self._traits["head"]}/{self._traits[_type]}.png'
-            if _type == "headwear" and self.traits["head"] in ["Juanita"] and self.traits["headwear"] in [
-                "Gold crown", "Reverse hat"]:
+
+            if _type == "headwear" \
+                    and self.traits["head"] == "Juanita" \
+                    and self.traits["headwear"] in ["Gold Crown", "Reverse hat"]:
                 path = f'assets/{_type}/{self._traits["head"]}/{self._traits[_type]}.png'
 
             self.__traits_path[_type] = path
@@ -48,9 +64,8 @@ class Ape:
 
     def _has_face_jewelry(self) -> bool:
         face_jewelry = ["Cross Earring", "Double Ear Piercing",
-                        "Golden Earring", "Golden Eyebrow Piercing",
-                        "Golden Nose Ring", "Septum Piercing"]
-        return self.traits["jewelry"] in face_jewelry;
+                        "Golden Earring", "Golden Nose Ring", "Septum Piercing"]
+        return self.traits["jewelry"] in face_jewelry
 
     def render(self):
         ape = None
@@ -58,6 +73,9 @@ class Ape:
         render_order = deepcopy(self.RENDER_ORDER)
         if self._has_face_jewelry() and type(self) is not GasmaskApe and type(self) is not AstronautApe:
             render_order[3], render_order[4] = render_order[4], render_order[3]
+        elif self._traits["jewelry"] == "Golden Eyebrow Piercing":
+            render_order.insert(5, render_order.pop(3))
+
 
         for trait in render_order:
             try:
@@ -111,6 +129,7 @@ class AstronautApe(Ape):
                     "eye", "glasses", "outfit"]
 
     def __init__(self, traits: dict):
+        traits["body"] = "Astronaut 2"
         if "Turned" in traits["head"]:
             traits["eye"] = "None"
         if "Golden" in traits["head"]:
