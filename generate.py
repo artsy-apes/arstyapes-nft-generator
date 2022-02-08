@@ -39,7 +39,28 @@ def main():
         config = json.load(f)
 
     apes = list()
-    it = 0
+
+    # append predefined apes to the apes list
+    predefined = ["captain", "space-brightsky", "chef",
+                  "eggenberg", "golden", "lorent",
+                  "beach", "space-gold","space-silver", "squid", "studo"]
+    for dir in predefined:
+        base_path = f"{dir}/"
+        for ape in os.listdir(base_path):
+            file_name = os.path.join(base_path, ape)
+            with open(file_name) as f:
+                traits = json.load(f)
+                ape = Ape(traits)
+                if dir == "golden":
+                    ape = GoldenApe(traits)
+                if dir == "squid":
+                    ape = SquidgameApe(traits)
+                if "space" in dir:
+                    ape = AstronautApe(traits)
+                apes.append(ape)
+
+    # generate and append random apes
+    it = len(apes)
     while it < config['total_images']:
         ape = select_ape_traits(config['traits'])
         if ape not in apes:
