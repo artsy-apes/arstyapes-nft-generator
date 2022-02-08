@@ -45,7 +45,7 @@ def main():
                   "eggenberg", "golden", "lorent",
                   "beach", "space-gold","space-silver", "squid", "studo"]
     for dir in predefined:
-        base_path = f"{dir}/"
+        base_path = f"predefined/{dir}"
         for ape in os.listdir(base_path):
             file_name = os.path.join(base_path, ape)
             with open(file_name) as f:

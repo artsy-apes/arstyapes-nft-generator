@@ -37,8 +37,5 @@ def main():
     pprint(percentage)
 
 
-
-
-
 if __name__ == '__main__':
     main()
