@@ -123,7 +123,7 @@ class Ape:
             }
         }
         with open(f"./generated/metadata/artsyape-{str(self.id)}.json", "w") as f:
-            json.dump(data, f, indent=4)
+            json.dump(data, f, indent=4, ensure_ascii=False)
 
 
 class GoldenApe(Ape):
