@@ -43,7 +43,7 @@ def main():
     # append predefined apes to the apes list
     predefined = ["captain", "space-brightsky", "chef",
                   "eggenberg", "golden", "lorent",
-                  "beach", "space-gold","space-silver", "squid", "studo"]
+                  "beach", "space-gold","space-silver", "squid", "studo", "gostudent"]
     for dir in predefined:
         base_path = f"predefined/{dir}"
         for ape in os.listdir(base_path):
