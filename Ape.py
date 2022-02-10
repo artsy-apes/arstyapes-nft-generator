@@ -111,7 +111,16 @@ class Ape:
 
         data = {
             "id": self.id,
-            "traits": self._traits
+            "traits": {
+                "ape": self.traits["head"],
+                "background": self.traits["background"],
+                "eyes": self.traits["eye"],
+                "glasses": self.traits["glasses"],
+                "jewelry": self.traits["jewelry"],
+                "headwear": "None" if self.traits["headwear"] == "Orange Hoodie underlay" else self.traits["headwear"],
+                "mouth": "Nothing" if self.traits["mouth attributes"] == "None" else self.traits["mouth attributes"],
+                "outfit": self.traits["outfit"]
+            }
         }
         with open(f"./generated/metadata/artsyape-{str(self.id)}.json", "w") as f:
             json.dump(data, f, indent=4)
@@ -132,6 +141,10 @@ class ZombieApe(Ape):
     RENDER_ORDER = ["background", "body", "outfit",
                     "jewelry", "head", "eye", "mouth attributes",
                     "headwear"]
+
+    def __init__(self, traits: dict):
+        traits["eye"] = "Loose"
+        super().__init__(traits)
 
 
 class AstronautApe(Ape):
