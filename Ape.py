@@ -72,9 +72,13 @@ class Ape:
 
         render_order = deepcopy(self.RENDER_ORDER)
         if self._has_face_jewelry() and type(self) is not GasmaskApe and type(self) is not AstronautApe:
-            render_order[3], render_order[4] = render_order[4], render_order[3]
+            jewelry_index = render_order.index("jewelry")
+            head_index = render_order.index("head")
+            render_order[jewelry_index], render_order[head_index] = render_order[head_index], render_order[jewelry_index]
         elif self._traits["jewelry"] == "Golden Eyebrow Piercing":
-            render_order.insert(5, render_order.pop(3))
+            jewelry_index = render_order.index("jewelry")
+            eye_index = render_order.index("eye")
+            render_order.insert(eye_index, render_order.pop(jewelry_index))
 
 
         for trait in render_order:
@@ -117,10 +121,15 @@ class GoldenApe(Ape):
                     "jewelry", "head", "mouth attributes",
                     "glasses", "headwear"]
 
+    def __init__(self, traits: dict):
+        traits["eye"] = "Golden Gaze"
+        super().__init__(traits)
+
+
 
 class ZombieApe(Ape):
     RENDER_ORDER = ["background", "body", "outfit",
-                    "jewelry", "head", "mouth attributes",
+                    "jewelry", "head", "eye", "mouth attributes",
                     "headwear"]
 
 
@@ -139,6 +148,20 @@ class AstronautApe(Ape):
         super().__init__(traits)
 
 
+class LuartApe(Ape):
+    RENDER_ORDER = ["background", "luart-background", "body", "outfit", "jewelry",
+                    "head", "eye", "glasses", "headwear"]
+
+    def __init__(self, traits: dict):
+        traits["luart-background"] = "Luart Helmet Backround"
+        if "Turned" in traits["head"]:
+            traits["eye"] = "Loose"
+        if "Hoodie" in traits["outfit"]:
+            traits["outfit"] = "None"
+        if "Gasmask" in traits["glasses"]:
+            traits["glasses"] = "None"
+        super().__init__(traits)
+
 class SquidgameApe(Ape):
     RENDER_ORDER = ["background", "outfit"]
 
@@ -149,8 +172,10 @@ class GasmaskApe(Ape):
 
 class HoodieApe(Ape):
     def __init__(self, traits: dict):
+        traits["body"] = "Orange Hoodie underlay"
+        traits["headwear"] = "Orange Hoodie overlay"
         if "Turned" in traits["head"]:
-            traits["eye"] = "None"
+            traits["eye"] = "Loose"
         if "Gasmask" in traits["glasses"]:
             traits["mouth attributes"] = "None"
         super().__init__(traits)

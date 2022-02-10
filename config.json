@@ -150,21 +150,22 @@
         "headwear": {
             "Clown Wig": 3,
             "Propeller Hat": 4,
-            "Santa Hat": 2,
+            "Santa Hat": 1,
             "Gold Crown": 1,
-            "None": 50,
+            "None": 51,
             "Visor Cap": 4,
-            "ArtsyApes Cap": 2,
+            "ArtsyApes Cap": 4,
             "Captain's Hat": 4,
             "Gold Halo": 2,
-            "Reverse Hat": 5,
+            "Reverse Hat": 4,
             "Devil Horns": 3,
             "Beer Helmet": 3,
-            "Orange Beanie": 5,
+            "Orange Beanie": 4,
             "Red Cap": 3,
             "Chef's Hat": 4,
 			"Jägermeister Cap": 2,
-			"Jägermeister Antlers": 2
+			"Jägermeister Antlers": 2,
+            "Luart Helmet": 1
         }
     }
 }

@@ -2,7 +2,7 @@ import json
 import os
 import random
 import sys
-from Ape import Ape, ZombieApe, SquidgameApe, GasmaskApe, AstronautApe, HoodieApe, GoldenApe
+from Ape import Ape, ZombieApe, SquidgameApe, GasmaskApe, AstronautApe, HoodieApe, GoldenApe, LuartApe
 
 
 def select_ape_traits(traits):
@@ -27,9 +27,9 @@ def select_ape_traits(traits):
         ape = SquidgameApe(ape_traits)
     if "Astronaut" in ape_traits["outfit"]:
         ape = AstronautApe(ape_traits)
+    if "Luart" in ape_traits["headwear"]:
+        ape = LuartApe(ape_traits)
     if "Orange Hoodie" in ape_traits["outfit"]:
-        ape_traits["body"] = "Orange Hoodie underlay"
-        ape_traits["headwear"] = "Orange Hoodie overlay"
         ape = HoodieApe(ape_traits)
     return ape
 
