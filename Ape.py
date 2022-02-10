@@ -99,8 +99,9 @@ class Ape:
             os.mkdir('generated')
 
         ape = ape.convert('RGB')
+        ape = ape.resize((800, 800), Image.ANTIALIAS)
         file_name = str("artsyape-" + str(self.id) + ".jpeg")
-        ape.save("./generated/" + file_name, "JPEG", optimize=True, quality=30)
+        ape.save("./generated/" + file_name, "JPEG", optimize=True, quality=100)
 
         self._create_json_metadata_file()
 
