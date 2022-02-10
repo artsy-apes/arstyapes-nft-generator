@@ -117,7 +117,7 @@ class Ape:
                 "eyes": self.traits["eye"],
                 "glasses": self.traits["glasses"],
                 "jewelry": self.traits["jewelry"],
-                "headwear": "None" if self.traits["headwear"] == "Orange Hoodie underlay" else self.traits["headwear"],
+                "headwear": "None" if self.traits["headwear"] == "Orange Hoodie overlay" else self.traits["headwear"],
                 "mouth": "Nothing" if self.traits["mouth attributes"] == "None" else self.traits["mouth attributes"],
                 "outfit": self.traits["outfit"]
             }
