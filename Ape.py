@@ -112,7 +112,7 @@ class Ape:
         data = {
             "id": self.id,
             "traits": {
-                "ape": self.traits["head"],
+                "ape": self.traits["head"] if self.traits["outfit"] != "Banana Game Suit" else "Unknown",
                 "background": self.traits["background"],
                 "eyes": self.traits["eye"],
                 "glasses": self.traits["glasses"],
@@ -139,12 +139,15 @@ class GoldenApe(Ape):
 
 class ZombieApe(Ape):
     RENDER_ORDER = ["background", "body", "outfit",
-                    "jewelry", "head", "eye", "mouth attributes",
+                    "jewelry", "head", "eye", "glasses", "mouth attributes",
                     "headwear"]
 
     def __init__(self, traits: dict):
         traits["eye"] = "Loose"
         super().__init__(traits)
+        if "Gasmask" in traits["glasses"]:
+            traits["glasses"] = "None"
+
 
 
 class AstronautApe(Ape):
