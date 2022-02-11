@@ -171,6 +171,7 @@ class LuartApe(Ape):
 
     def __init__(self, traits: dict):
         traits["luart-background"] = "Luart Helmet Backround"
+        traits["mouth attributes"] = "None"
         if "Turned" in traits["head"]:
             traits["eye"] = "Loose"
         if "Hoodie" in traits["outfit"]:
