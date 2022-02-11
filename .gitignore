@@ -135,3 +135,5 @@ assets/background/*
 assets/head/*
 assets/eye/*
 assets/headwear/*
+
+*.cvs

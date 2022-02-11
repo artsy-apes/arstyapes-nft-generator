@@ -2,6 +2,8 @@ import json
 import os
 import random
 import sys
+import time
+
 from Ape import Ape, ZombieApe, SquidgameApe, GasmaskApe, AstronautApe, HoodieApe, GoldenApe, LuartApe
 
 
@@ -38,26 +40,27 @@ def main():
     with open('config.json') as f:
         config = json.load(f)
 
+    # list with all generated apes
     apes = list()
 
     # append predefined apes to the apes list
-    predefined = ["captain", "space-brightsky", "chef",
-                  "eggenberg", "golden", "lorent",
-                  "beach", "space-gold","space-silver", "squid", "studo", "gostudent"]
-    for dir in predefined:
-        base_path = f"predefined/{dir}"
-        for ape in os.listdir(base_path):
-            file_name = os.path.join(base_path, ape)
-            with open(file_name) as f:
-                traits = json.load(f)
-                ape = Ape(traits)
-                if dir == "golden":
-                    ape = GoldenApe(traits)
-                if dir == "squid":
-                    ape = SquidgameApe(traits)
-                if "space" in dir:
-                    ape = AstronautApe(traits)
-                apes.append(ape)
+    # predefined = ["captain", "space-brightsky", "chef",
+    #               "eggenberg", "golden", "lorent",
+    #               "beach", "space-gold", "space-silver", "squid", "studo", "gostudent"]
+    # for dir in predefined:
+    #     base_path = f"predefined/{dir}"
+    #     for ape in os.listdir(base_path):
+    #         file_name = os.path.join(base_path, ape)
+    #         with open(file_name) as f:
+    #             traits = json.load(f)
+    #             ape = Ape(traits)
+    #             if dir == "golden":
+    #                 ape = GoldenApe(traits)
+    #             if dir == "squid":
+    #                 ape = SquidgameApe(traits)
+    #             if "space" in dir:
+    #                 ape = AstronautApe(traits)
+    #             apes.append(ape)
 
     # generate and append random apes
     it = len(apes)
@@ -71,6 +74,7 @@ def main():
             sys.stdout.write("{:2d} ape generated.".format(it))
             sys.stdout.flush()
 
+    # start_time = time.time()
     random.shuffle(apes)
     for i in range(len(apes)):
         apes[i].id = i + 1
@@ -78,6 +82,7 @@ def main():
         # Count how many apes generated
         sys.stdout.write("\r")
         sys.stdout.write(f"{i} ape rendered.")
+        # sys.stdout.write(f"{round(time.time() - start_time, 2)} seconds.")
         sys.stdout.flush()
 
 

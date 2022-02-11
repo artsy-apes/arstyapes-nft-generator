@@ -42,7 +42,7 @@ class Ape:
 
             if _type == "headwear" \
                     and self.traits["head"] == "Juanita" \
-                    and self.traits["headwear"] in ["Gold Crown", "Reverse hat"]:
+                    and self.traits["headwear"] in ["Gold Crown", "Reverse Hat"]:
                 path = f'assets/{_type}/{self._traits["head"]}/{self._traits[_type]}.png'
 
             self.__traits_path[_type] = path
