@@ -1,80 +1,95 @@
 import csv
 import json
+from copy import deepcopy
 import os
 import pandas as pd
 from pprint import pprint
 
 
-def calc_single_trait_percentage():
+def open_metadata_csv():
     csv_path = "metadata3777.csv"
-    if not os.path.exists(csv_path):
-        raise Exception("Generate collection first.")
+
+    csv_data = pd.read_csv(csv_path, index_col=False)
+    csv_data.pop("Token Name")
+    csv_data.pop("File Name")
+
+    return csv.reader(csv_data.to_csv(index=None).split("\n"))
+
+
+def save_to_cvs(path, header, csv_data):
+    with open(path, 'w', encoding='UTF8', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(header)
+        writer.writerows(csv_data)
+
+
+def calc_single_trait_count_and_percentage():
+    apes_traits = open_metadata_csv()
 
     attributes_types = ("background", "ape", "eyes", "jewelry", "headwear", "mouth", "glasses", "outfit")
-
     count = {}
     for att in attributes_types:
         count[att] = {}
 
-    csv_data = pd.read_csv(csv_path, index_col=False)
-    csv_data.pop("Id")
-    csv_data.pop("Token Name")
-    csv_data.pop("File Name")
-    csv_reader = csv.reader(csv_data.to_csv(index=None).split("\n"))
-
     header = []
-    for row in csv_reader:
+    for ape in apes_traits:
         if not len(header):
-            header = row
+            header = ape
             continue
-        for it in range(len(row)):
+        for it in range(len(ape)):
             trait_type = header[it]
-            trait = row[it]
+            trait = ape[it]
+            if trait_type == "Id":
+                continue
             if trait in count[trait_type]:
                 count[trait_type][trait] += 1
             else:
                 count[trait_type].update({trait: 1})
 
-    percentage = count.copy()
+    percentage = deepcopy(count)
     for trait_type in percentage:
         for trait in percentage[trait_type]:
-            percentage[trait_type][trait] = (percentage[trait_type][trait] / 3777) * 100
+            percentage[trait_type][trait] = (percentage[trait_type][trait] / 3777)
 
-    return percentage
+    return count, percentage
 
-# def main():
-#     """
-#     Calculate how often does trait appear in the collection.
-#     """
-#     if not os.path.exists("metadata3777.csv"):
-#         raise Exception("Generate collection first.")
-#
-#     attributes_types = ("background", "head", "eye", "jewelry", "headwear", "mouth attributes", "body", "glasses", "outfit")
-#
-#     base_path = "generated/metadata"
-#     dirs = os.listdir(base_path)
-#
-#     count = {}
-#     for att in attributes_types:
-#         count[att] = {}
-#
-#     for file in dirs:
-#         path = os.path.join(base_path, file)
-#         with open(path, 'r') as f:
-#             traits: dict = json.load(f)["traits"]
-#             for (trait_type, item) in traits.items():
-#                 if item in count[trait_type]:
-#                     count[trait_type][item] += 1
-#                 else:
-#                     count[trait_type].update({item: 1})
-#
-#     percentage = count.copy()
-#     for trait_type in percentage:
-#         for trait in percentage[trait_type]:
-#             percentage[trait_type][trait] = (percentage[trait_type][trait] / 3777) * 100
-#
-#     pprint(percentage)
+
+def statistical_rarity(traits_percentage):
+    apes_traits = open_metadata_csv()
+
+    apes_statistical_rarity = []
+    trait_types = []
+    for ape in apes_traits:
+        try:
+            # Save header as trait types
+            if not len(trait_types):
+                trait_types = ape
+                continue
+            ape_rarity:float = 1.0
+            trait_percentages = []
+            for it in range(len(ape)):
+                trait_type = trait_types[it]
+                trait = ape[it]
+                if trait_type == "Id":
+                    continue
+                else:
+                    trait_percentages.append(traits_percentage[trait_type][trait])
+                    ape_rarity *= traits_percentage[trait_type][trait]
+            ape.extend(trait_percentages)
+            # ape.append('{:.25f}'.format(ape_rarity))
+            ape.append(ape_rarity)
+            apes_statistical_rarity.append(ape)
+        except Exception as e:
+            continue
+
+    trait_types.extend(['ape %', 'background %', 'eyes %', 'glasses %', 'jewelry %', 'headwear %', 'mouth %', 'outfit %'])
+    save_to_cvs("statistical_rarity.csv", trait_types, apes_statistical_rarity)
+
+
+def main():
+    trait_count, traits_percentage = calc_single_trait_count_and_percentage()
+    statistical_rarity(traits_percentage)
 
 
 if __name__ == '__main__':
-    calc_single_trait_percentage()
+    main()
