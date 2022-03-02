@@ -99,7 +99,7 @@ class Ape:
             os.mkdir('generated')
 
         ape = ape.convert('RGB')
-        ape = ape.resize((800, 800), Image.ANTIALIAS)
+        ape = ape.resize((2000, 2000), Image.ANTIALIAS)
         file_name = str("artsyape-" + str(self.id) + ".jpeg")
         ape.save("./generated/" + file_name, "JPEG", optimize=True, quality=100)
 

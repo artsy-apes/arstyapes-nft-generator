@@ -86,5 +86,29 @@ def main():
         sys.stdout.flush()
 
 
+def gernerateById(apeId: int):
+    from rarity import open_metadata_csv
+    meta_data_csv = open_metadata_csv()
+
+    for row in meta_data_csv:
+        if len(row) and row[0] == str(apeId):
+            row.pop(0)
+            traits = {
+                "body": row[0],
+                "head": row[0],
+                "jewelry": row[4],
+                "outfit": row[7],
+                "eye": row[2],
+                "mouth attributes": row[6],
+                "background": row[1],
+                "glasses": row[3],
+                "headwear": row[5]
+            }
+            ape = Ape(traits)
+            ape.id = apeId
+            ape.render()
+
+
 if __name__ == '__main__':
-    main()
+    # main()
+    gernerateById(572)

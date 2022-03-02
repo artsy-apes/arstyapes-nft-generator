@@ -23,6 +23,20 @@ def save_to_cvs(path, header, csv_data):
         writer.writerows(csv_data)
 
 
+def get_number_of_traits(id):
+    apes_traits = open_metadata_csv()
+
+    count = 0
+    for ape in apes_traits:
+        if len(ape) and ape[0] == str(id):
+            ape.pop(0)
+            for trait in ape:
+                if trait != "None" and trait != "Nothing":
+                    print(trait)
+                    count += 1
+    return count
+
+
 def calc_single_trait_count_and_percentage():
     apes_traits = open_metadata_csv()
 
@@ -92,4 +106,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    print(get_number_of_traits(200))
