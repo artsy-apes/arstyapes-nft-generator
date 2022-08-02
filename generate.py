@@ -36,7 +36,7 @@ def select_ape_traits(traits):
     return ape
 
 
-def main():
+def generate():
     with open('config.json') as f:
         config = json.load(f)
 
@@ -110,5 +110,4 @@ def gernerateById(apeId: int):
 
 
 if __name__ == '__main__':
-    # main()
-    gernerateById(572)
+    generate()
