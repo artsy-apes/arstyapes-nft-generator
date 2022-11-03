@@ -5,8 +5,8 @@ from PIL import Image
 
 
 class Ape:
-    RENDER_ORDER = ["background", "body", "outfit",
-                    "jewelry", "head", "eye",
+    RENDER_ORDER = ["background", "eye", "body", "outfit",
+                    "jewelry", "head",
                     "mouth attributes", "glasses", "headwear"]
 
     def __init__(self, traits: dict):
@@ -18,32 +18,108 @@ class Ape:
         for _type, name in self.traits.items():
             path = f'assets/{_type}/{name}.png'
 
-            if _type == "mouth attributes" and self._traits[_type] != "Respirator":
+            if _type == "mouth attributes":
                 path = f'assets/{_type}/{self._traits["head"]}/{self._traits[_type]}.png'
-
-            if _type == 'jewelry' and self._traits[_type] == "Septum Piercing":
-                path = f'assets/{_type}/{self._traits["head"]}/{self._traits[_type]}.png'
-
-            if _type == 'jewelry' and self.traits[_type] == "Golden Earring" and self.traits["body"] == "Jeff":
-                path = f'assets/{_type}/{self._traits["body"]}/{self._traits[_type]}.png'
 
             if _type == 'jewelry' and self._traits[_type] == "Golden Eyebrow Piercing":
-                path = f'assets/{_type}/{self._traits["eye"]}/{self._traits[_type]}.png'
-
-            if _type == 'jewelry' \
-                    and self._traits[_type] == "Golden Eyebrow Piercing" \
-                    and self.traits["body"] == "Turned":
-                path = f'assets/{_type}/{self.traits["body"]}/{self._traits[_type]}.png'
-
-            if _type == "headwear" \
-                    and self.traits["body"] == "Robin" \
-                    and self.traits["headwear"] in ["Gold Crown", "Reverse Hat", "Captains Hat"]:
                 path = f'assets/{_type}/{self._traits["head"]}/{self._traits[_type]}.png'
 
+            # if _type == 'jewelry' and self.traits[_type] == "Golden Earring" and self.traits["body"] == "Jeff":
+            #    path = f'assets/{_type}/{self._traits["body"]}/{self._traits[_type]}.png'
+
             if _type == "headwear" \
-                    and self.traits["head"] == "Juanita" \
-                    and self.traits["headwear"] in ["Gold Crown", "Reverse Hat"]:
+                    and self.traits["head"] == "Albert" or _type == "headwear" and self.traits["head"] == "Gordo" \
+                    or _type == "headwear" and self.traits["head"] == "Jeff" or _type == "headwear" \
+                    and self.traits["head"] == "Juanita" or _type == "headwear" and self.traits["head"] == "Whitney":
                 path = f'assets/{_type}/{self._traits["head"]}/{self._traits[_type]}.png'
+
+            if _type == "jewelry" and self.traits["head"] == "Turned":
+                if self.traits["jewelry"] == "Cross Earring" or self.traits["jewelry"] == "Double Ear Piercing" or \
+                        self.traits["jewelry"] == "Golden Earring" or \
+                        self.traits["jewelry"] == "Golden Eyebrow Piercing" or self.traits["jewelry"] == "None" or \
+                        self.traits["jewelry"] == "Golden Nose Ring" or self.traits["jewelry"] == "Septum Piercing":
+
+                    path = f'assets/{_type}/{self._traits["head"]}/{self._traits[_type]}.png'
+
+            if _type == "head" and self.traits["head"] == "Juanita":
+                if self.traits["headwear"] == "Clown Wig" or self.traits["headwear"] == "Devil Horns" or \
+                        self.traits["headwear"] == "Gold Halo" or self.traits["headwear"] == "Jägermeister Antlers" or \
+                        self.traits["headwear"] == "None" or self.traits["headwear"] == "Papa Cans" or \
+                        self.traits["headwear"] == "Visor Cap":
+                    path = f'assets/{_type}/{self._traits["head"]}.png'
+
+                else:
+                    path = f'assets/{_type}/{self._traits["head"]}NH.png'
+
+            if _type == "headwear" and self.traits["head"] == "Juanita":
+                if self.traits["headwear"] == "Clown Wig" or self.traits["headwear"] == "Devil Horns" or \
+                        self.traits["headwear"] == "Gold Halo" or self.traits["headwear"] == "Jägermeister Antlers" or \
+                        self.traits["headwear"] == "None" or self.traits["headwear"] == "Papa Cans" or \
+                        self.traits["headwear"] == "Visor Cap":
+                    path = f'assets/{_type}/{self._traits["head"]}/{self._traits[_type]}.png'
+
+                else:
+                    path = f'assets/{_type}/{self._traits["head"]}NH/{self._traits[_type]}.png'
+
+            if _type == "head" and self.traits["head"] == "Bruno":
+                if self.traits["headwear"] == "Clown Wig" or self.traits["headwear"] == "Devil Horns" or \
+                        self.traits["headwear"] == "Gold Halo" or self.traits["headwear"] == "Jägermeister Antlers" or \
+                        self.traits["headwear"] == "None" or self.traits["headwear"] == "Papa Cans" or \
+                        self.traits["headwear"] == "Visor Cap":
+                    path = f'assets/{_type}/{self._traits["head"]}.png'
+
+                else:
+                    path = f'assets/{_type}/{self._traits["head"]}NH.png'
+
+            if _type == "headwear" and self.traits["head"] == "Bruno":
+                if self.traits["headwear"] == "Clown Wig" or self.traits["headwear"] == "Devil Horns" or \
+                        self.traits["headwear"] == "Gold Halo" or self.traits["headwear"] == "Jägermeister Antlers" or \
+                        self.traits["headwear"] == "None" or self.traits["headwear"] == "Papa Cans" or \
+                        self.traits["headwear"] == "Visor Cap":
+                    path = f'assets/{_type}/{self._traits["head"]}/{self._traits[_type]}.png'
+
+                else:
+                    path = f'assets/{_type}/{self._traits["head"]}NH/{self._traits[_type]}.png'
+
+            if _type == "head" and self.traits["head"] == "Lou":
+                if self.traits["headwear"] == "Devil Horns" or \
+                        self.traits["headwear"] == "Gold Halo" or self.traits["headwear"] == "Jägermeister Antlers" or \
+                        self.traits["headwear"] == "None" or self.traits["headwear"] == "Papa Cans" or \
+                        self.traits["headwear"] == "Visor Cap":
+                    path = f'assets/{_type}/{self._traits["head"]}.png'
+
+                else:
+                    path = f'assets/{_type}/{self._traits["head"]}NH.png'
+
+            if _type == "headwear" and self.traits["head"] == "Lou":
+                if self.traits["headwear"] == "Devil Horns" or \
+                        self.traits["headwear"] == "Gold Halo" or self.traits["headwear"] == "Jägermeister Antlers" or \
+                        self.traits["headwear"] == "None" or self.traits["headwear"] == "Papa Cans" or \
+                        self.traits["headwear"] == "Visor Cap":
+                    path = f'assets/{_type}/{self._traits["head"]}/{self._traits[_type]}.png'
+
+                else:
+                    path = f'assets/{_type}/{self._traits["head"]}NH/{self._traits[_type]}.png'
+
+            if _type == "head" and self.traits["head"] == "Robin":
+                if self.traits["headwear"] == "Clown Wig" or self.traits["headwear"] == "Devil Horns" or \
+                        self.traits["headwear"] == "Gold Halo" or self.traits["headwear"] == "Jägermeister Antlers" or \
+                        self.traits["headwear"] == "None" or self.traits["headwear"] == "Papa Cans" or \
+                        self.traits["headwear"] == "Visor Cap":
+                    path = f'assets/{_type}/{self._traits["head"]}.png'
+
+                else:
+                    path = f'assets/{_type}/{self._traits["head"]}NH.png'
+
+            if _type == "headwear" and self.traits["head"] == "Robin":
+                if self.traits["headwear"] == "Clown Wig" or self.traits["headwear"] == "Devil Horns" or \
+                        self.traits["headwear"] == "Gold Halo" or self.traits["headwear"] == "Jägermeister Antlers" or \
+                        self.traits["headwear"] == "None" or self.traits["headwear"] == "Papa Cans" or \
+                        self.traits["headwear"] == "Visor Cap":
+                    path = f'assets/{_type}/{self._traits["head"]}/{self._traits[_type]}.png'
+
+                else:
+                    path = f'assets/{_type}/{self._traits["head"]}NH/{self._traits[_type]}.png'
 
             self.__traits_path[_type] = path
 
@@ -71,15 +147,17 @@ class Ape:
         ape = None
 
         render_order = deepcopy(self.RENDER_ORDER)
-        if self._has_face_jewelry() and type(self) is not GasmaskApe and type(self) is not AstronautApe:
+        if self._has_face_jewelry() and type(self) is not GasmaskApe and type(self) is not AstronautApe \
+                and type(self) is not HoodieApe:
             jewelry_index = render_order.index("jewelry")
             head_index = render_order.index("head")
-            render_order[jewelry_index], render_order[head_index] = render_order[head_index], render_order[jewelry_index]
+            render_order[jewelry_index], render_order[head_index] = render_order[head_index], render_order[
+                jewelry_index]
+
         elif self._traits["jewelry"] == "Golden Eyebrow Piercing":
             jewelry_index = render_order.index("jewelry")
             eye_index = render_order.index("eye")
             render_order.insert(eye_index, render_order.pop(jewelry_index))
-
 
         for trait in render_order:
             try:
@@ -99,7 +177,7 @@ class Ape:
             os.mkdir('generated')
 
         ape = ape.convert('RGB')
-        ape = ape.resize((2000, 2000), Image.ANTIALIAS)
+        ape = ape.resize((4000, 4000), Image.ANTIALIAS)
         file_name = str("artsyape-" + str(self.id) + ".jpeg")
         ape.save("./generated/" + file_name, "JPEG", optimize=True, quality=100)
 
@@ -136,8 +214,8 @@ class GoldenApe(Ape):
         super().__init__(traits)
 
 
-
 class ZombieApe(Ape):
+
     RENDER_ORDER = ["background", "body", "outfit",
                     "jewelry", "head", "eye", "glasses", "mouth attributes",
                     "headwear"]
@@ -145,19 +223,17 @@ class ZombieApe(Ape):
     def __init__(self, traits: dict):
         traits["eye"] = "Loose"
         super().__init__(traits)
-        if "Gasmask" in traits["glasses"]:
-            traits["glasses"] = "None"
-
 
 
 class AstronautApe(Ape):
-    RENDER_ORDER = ["background", "body", "head",
-                    "eye", "glasses", "outfit"]
+    RENDER_ORDER = ["background", "body", "headwear", "eye", "head",
+                    "glasses", "outfit"]
 
     def __init__(self, traits: dict):
-        traits["body"] = "Astronaut 2"
+        traits["headwear"] = "Space Suit Background"
+        traits["jewelry"] = "None"
         if "Turned" in traits["head"]:
-            traits["eye"] = "None"
+            traits["eye"] = "Loose"
         if "Golden" in traits["head"]:
             traits["eye"] = "None"
         if "Gasmask" in traits["glasses"]:
@@ -180,8 +256,13 @@ class LuartApe(Ape):
             traits["glasses"] = "None"
         super().__init__(traits)
 
+
 class SquidgameApe(Ape):
-    RENDER_ORDER = ["background", "outfit"]
+    RENDER_ORDER = ["background", "body", "outfit", "head"]
+
+    def __init__(self, traits: dict):
+        traits["body"] = "Decontamination Suit Background"
+        super().__init__(traits)
 
 
 class GasmaskApe(Ape):
@@ -189,6 +270,10 @@ class GasmaskApe(Ape):
 
 
 class HoodieApe(Ape):
+    RENDER_ORDER = ["background", "body", "outfit",
+                    "jewelry", "eye", "head", "glasses", "headwear",
+                    "mouth attributes"]
+
     def __init__(self, traits: dict):
         traits["body"] = "Orange Hoodie underlay"
         traits["headwear"] = "Orange Hoodie overlay"

@@ -23,44 +23,46 @@ def select_ape_traits(traits):
         ape = GoldenApe(ape_traits)
     if "Turned" in ape_traits["body"]:
         ape = ZombieApe(ape_traits)
-    if "Gasmask" in ape_traits["glasses"]:
-        ape = GasmaskApe(ape_traits)
-    if "Squidgame" in ape_traits["outfit"]:
+    if "Decontamination" in ape_traits["outfit"]:
         ape = SquidgameApe(ape_traits)
     if "Astronaut" in ape_traits["outfit"]:
         ape = AstronautApe(ape_traits)
-    if "Luart" in ape_traits["headwear"]:
-        ape = LuartApe(ape_traits)
     if "Orange Hoodie" in ape_traits["outfit"]:
         ape = HoodieApe(ape_traits)
     return ape
 
 
 def generate():
-    with open('config.json') as f:
+    with open('configV2.json') as f:
         config = json.load(f)
 
     # list with all generated apes
     apes = list()
 
     # append predefined apes to the apes list
-    predefined = ["captain", "space-brightsky", "chef",
-                  "eggenberg", "golden", "lorent",
-                  "beach", "space-gold", "space-silver", "squid", "studo", "gostudent"]
-    for dir in predefined:
-        base_path = f"predefined/{dir}"
-        for ape in os.listdir(base_path):
-            file_name = os.path.join(base_path, ape)
-            with open(file_name) as f:
-                traits = json.load(f)
-                ape = Ape(traits)
-                if dir == "golden":
-                    ape = GoldenApe(traits)
-                if dir == "squid":
-                    ape = SquidgameApe(traits)
-                if "space" in dir:
-                    ape = AstronautApe(traits)
-                apes.append(ape)
+    # predefined = ["captain", "space-brightsky", "chef",
+    #              "eggenberg", "golden", "lorent",
+    #              "beach", "space-gold", "space-silver", "squid", "studo", "gostudent"]
+    # for dir in predefined:
+    #    base_path = f"predefined/{dir}"
+    #    for ape in os.listdir(base_path):
+    #        file_name = os.path.join(base_path, ape)
+    #        with open(file_name) as f:
+    #            traits = json.load(f)
+    #            ape = Ape(traits)
+    #            if dir == "golden":
+    #                ape = GoldenApe(traits)
+    #            if dir == "squid":
+    #                ape = SquidgameApe(traits)
+    #            if "space" in dir:
+    #                ape = AstronautApe(traits)
+    #            apes.append(ape)
+
+    x = 445
+    while x < 3777:
+        print(x)
+        generateById(x)
+        x += 1
 
     # generate and append random apes
     it = len(apes)
@@ -81,12 +83,12 @@ def generate():
         apes[i].render()
         # Count how many apes generated
         sys.stdout.write("\r")
-        sys.stdout.write(f"{i} ape rendered.")
+        sys.stdout.write(f"{i} Apes rendered.")
         # sys.stdout.write(f"{round(time.time() - start_time, 2)} seconds.")
         sys.stdout.flush()
 
 
-def gernerateById(apeId: int):
+def generateById(apeId: int):
     from rarity import open_metadata_csv
     meta_data_csv = open_metadata_csv()
 
@@ -104,7 +106,18 @@ def gernerateById(apeId: int):
                 "glasses": row[3],
                 "headwear": row[5]
             }
+
             ape = Ape(traits)
+            if "Golden" in traits["body"]:
+                ape = GoldenApe(traits)
+            if "Turned" in traits["body"]:
+                ape = ZombieApe(traits)
+            if "Decontamination" in traits["outfit"]:
+                ape = SquidgameApe(traits)
+            if "Astronaut" in traits["outfit"]:
+                ape = AstronautApe(traits)
+            if "Orange Hoodie" in traits["outfit"]:
+                ape = HoodieApe(traits)
             ape.id = apeId
             ape.render()
 
