@@ -21,22 +21,20 @@ class Ape:
             if _type == "mouth attributes":
                 path = f'assets/{_type}/{self._traits["head"]}/{self._traits[_type]}.png'
 
-            if _type == 'jewelry' and self._traits[_type] == "Golden Eyebrow Piercing":
-                path = f'assets/{_type}/{self._traits["head"]}/{self._traits[_type]}.png'
-
             # if _type == 'jewelry' and self.traits[_type] == "Golden Earring" and self.traits["body"] == "Jeff":
             #    path = f'assets/{_type}/{self._traits["body"]}/{self._traits[_type]}.png'
 
             if _type == "headwear" \
                     and self.traits["head"] == "Albert" or _type == "headwear" and self.traits["head"] == "Gordo" \
                     or _type == "headwear" and self.traits["head"] == "Jeff" or _type == "headwear" \
-                    and self.traits["head"] == "Juanita" or _type == "headwear" and self.traits["head"] == "Whitney":
+                    and self.traits["head"] == "Ham" or _type == "headwear" and self.traits["head"] == "Whitney" \
+                    or _type == "headwear" and self.traits["head"] == "Turned":
                 path = f'assets/{_type}/{self._traits["head"]}/{self._traits[_type]}.png'
 
-            if _type == "jewelry" and self.traits["head"] == "Turned":
+            if _type == "jewelry":
                 if self.traits["jewelry"] == "Cross Earring" or self.traits["jewelry"] == "Double Ear Piercing" or \
                         self.traits["jewelry"] == "Golden Earring" or \
-                        self.traits["jewelry"] == "Golden Eyebrow Piercing" or self.traits["jewelry"] == "None" or \
+                        self.traits["jewelry"] == "Golden Eyebrow Piercing" or \
                         self.traits["jewelry"] == "Golden Nose Ring" or self.traits["jewelry"] == "Septum Piercing":
 
                     path = f'assets/{_type}/{self._traits["head"]}/{self._traits[_type]}.png'
