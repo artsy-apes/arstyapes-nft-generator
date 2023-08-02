@@ -171,13 +171,10 @@ class Ape:
         tag_img = Image.open("assets/tag/Tag white.png").convert('RGBA')
         ape = Image.alpha_composite(ape, tag_img)
 
-        if not os.path.exists("generated"):
-            os.mkdir('generated')
-
         ape = ape.convert('RGB')
         ape = ape.resize((4000, 4000), Image.ANTIALIAS)
-        file_name = str("artsyape-" + str(self.id) + ".jpeg")
-        ape.save("./generated/" + file_name, "JPEG", optimize=True, quality=100)
+        file_name = str("artsyape-" + str(self.id) + "ay" + ".jpeg")
+        ape.save("./ArtsyApes Onchain Images/" + file_name, "JPEG", optimize=True, quality=100, progressive=True)
 
         self._create_json_metadata_file()
 

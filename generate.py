@@ -58,11 +58,11 @@ def generate():
     #                ape = AstronautApe(traits)
     #            apes.append(ape)
 
-    x = 1
+    x = 548
     while x < 3778:
         print(x)
         generateById(x)
-        x += 1
+        x += 10000
 
     # generate and append random apes
     it = len(apes)
